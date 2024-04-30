@@ -11,5 +11,7 @@ COPY . .
 ENV SQLX_OFFLINE true
 # Build binary
 RUN cargo build --release
+# Use the production environment
+ENV APP_ENVIRONMENT production
 # When 'docker run' is executed, run the binary
 ENTRYPOINT ["./target/release/newsletter"]
