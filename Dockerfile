@@ -7,6 +7,8 @@ WORKDIR /app
 RUN apt update && apt install lld clang -y
 # Copy all the files from the working environment to the Docker image
 COPY . .
+# Make sqlx look at saved metadata instead of querying a live database
+ENV SQLX_OFFLINE true
 # Build binary
 RUN cargo build --release
 # When 'docker run' is executed, run the binary
