@@ -49,7 +49,7 @@ pub async fn get_subscriber_id_from_token(
         WHERE subscription_token = $1",
         subscription_token
     )
-    .fetch(pool)
+    .fetch_optional(pool)
     .await
     .map_err(|e| {
         tracing::error!("Failed to execute query: {:?}", e);
